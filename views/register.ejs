@@ -1,0 +1,36 @@
+<%- include('./shared/navbar.ejs') %>
+
+
+<div class="container text-center my-5">
+    <div class="user my-3">
+        <i class="far fa-edit user-icon"></i>
+        <h4 class="login">Register</h4>
+    </div>
+    <div class="card p-5 w-50 m-auto" >
+        <form method="POST" action="/handleRegister">
+            <input class="form-control" type="text" placeholder="Enter your name" name="name">
+            <% if (error.find((val)=> val.path[0]=='name')?.message) { %>
+                <div class="alert alert-danger">
+                    <%= error.find((val)=> val.path[0]=='name')?.message %>
+                </div>
+            <% } %>
+            <input class="form-control my-2" type="email" placeholder="Enter your email" name="email">
+            <% if (error.find((val)=> val.path[0]=='email')?.message) { %>
+                <div class="alert alert-danger">
+                    <%= error.find((val)=> val.path[0]=='email')?.message %>
+                </div>
+            <% } %>
+            <input class="form-control" type="password" placeholder="Enter your password" name="password">
+            <% if (error.find((val)=> val.path[0]=='password')?.message) { %>
+                <div class="alert alert-danger">
+                    <%= error.find((val)=> val.path[0]=='password')?.message %>
+                </div>
+            <% } %>
+            <!-- <input class="form-control my-2" type="password" placeholder="Password Confirmation" name="Confirm Password"> -->
+            <button class="btn btn-default-outline my-4 w-100 rounded">Register</button> 
+            <a class="btn btn-default-outline" href="/login">Login</a> 
+        </form>
+    </div>
+</div>
+
+<%- include('./shared/footer.ejs') %>
